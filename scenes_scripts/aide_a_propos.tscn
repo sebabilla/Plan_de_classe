@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfh8218wshk3b"]
+
+[ext_resource type="Script" path="res://scenes_scripts/aide_a_propos.gd" id="1_8n1v1"]
+
+[node name="AideAPropos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8n1v1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.04
+
+[node name="English" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "English"
+
+[node name="Espanol" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Español"
+
+[node name="Francais" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Français"
+
+[node name="Nihongo" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "日本語"
+
+[node name="Aide" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.58
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "Aide"
+
+[node name="APropos" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.38
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "A propos"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/English" to="." method="_on_english_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Espanol" to="." method="_on_espanol_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Francais" to="." method="_on_francais_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Nihongo" to="." method="_on_nihongo_pressed"]
+[connection signal="meta_clicked" from="MarginContainer/HBoxContainer/Aide" to="." method="_on_aide_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/HBoxContainer/APropos" to="." method="_on_a_propos_meta_clicked"]

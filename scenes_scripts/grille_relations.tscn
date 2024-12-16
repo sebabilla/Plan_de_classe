@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://ojsqiv526s8c"]
+
+[ext_resource type="Script" path="res://scenes_scripts/grille_relations.gd" id="1_8qi2u"]
+
+[node name="GrilleRelations" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 6
+columns = 4
+script = ExtResource("1_8qi2u")
+
+[node name="CoinGauche" type="Label" parent="."]
+layout_mode = 2
+
+[node name="NomsH" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ADistribuer" type="Label" parent="."]
+layout_mode = 2
+text = "O17_COIN_HD"
+
+[node name="Vide" type="Label" parent="."]
+layout_mode = 2
+text = "  "
+
+[node name="NomsV" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Affinites" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PointsV" type="GridContainer" parent="."]
+layout_mode = 2
+
+[node name="NomsVCopie" type="GridContainer" parent="."]
+layout_mode = 2
+
+[node name="Popularite" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "O17_COIN_BG"
+
+[node name="PointsH" type="GridContainer" parent="."]
+layout_mode = 2

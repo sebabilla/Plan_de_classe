@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqyny5wdhuuuy"]
+
+[ext_resource type="Script" path="res://scenes_scripts/main.gd" id="1_nexrx"]
+[ext_resource type="PackedScene" uid="uid://bhiqovyoupahs" path="res://scenes_scripts/classe_eleves.tscn" id="2_rahj1"]
+[ext_resource type="PackedScene" uid="uid://djp7plyxr7btb" path="res://scenes_scripts/sociogramme.tscn" id="3_02y75"]
+[ext_resource type="PackedScene" uid="uid://de3gvg6gimg31" path="res://scenes_scripts/plan_de_classe.tscn" id="4_gkebv"]
+[ext_resource type="PackedScene" uid="uid://cfh8218wshk3b" path="res://scenes_scripts/aide_a_propos.tscn" id="5_2wdqx"]
+[ext_resource type="PackedScene" path="res://scenes_scripts/sons.tscn" id="6_n7bqe"]
+
+[sub_resource type="Theme" id="Theme_at23l"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_at23l")
+script = ExtResource("1_nexrx")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="ClasseEleves" parent="TabContainer" instance=ExtResource("2_rahj1")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Sociogramme" parent="TabContainer" instance=ExtResource("3_02y75")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="PlanDeClasse" parent="TabContainer" instance=ExtResource("4_gkebv")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="AideAPropos" parent="TabContainer" instance=ExtResource("5_2wdqx")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Sons" parent="." instance=ExtResource("6_n7bqe")]
+
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="son_a_emettre" from="TabContainer/Sociogramme" to="." method="_jouer_son"]
+[connection signal="son_a_emettre" from="TabContainer/PlanDeClasse" to="." method="_jouer_son"]
+[connection signal="couper_son" from="TabContainer/AideAPropos" to="Sons" method="_on_aide_a_propos_couper_son"]

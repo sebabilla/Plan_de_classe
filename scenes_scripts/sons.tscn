@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://g05fhb38obqy"]
+
+[ext_resource type="Script" path="res://scenes_scripts/sons.gd" id="1_4j4g4"]
+[ext_resource type="AudioStream" uid="uid://cnrmbiq311e6v" path="res://sons/bulle.mp3" id="2_xhacw"]
+[ext_resource type="AudioStream" uid="uid://8eahkxqt3b87" path="res://sons/cloche.mp3" id="3_lvj6h"]
+[ext_resource type="AudioStream" uid="uid://befdv4gmm8mg1" path="res://sons/impact.mp3" id="4_33ab7"]
+[ext_resource type="AudioStream" uid="uid://daxdmeiygrmct" path="res://sons/page.mp3" id="5_oomk4"]
+
+[node name="Sons" type="Node"]
+script = ExtResource("1_4j4g4")
+
+[node name="Bulle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xhacw")
+volume_db = -20.0
+
+[node name="Cloche" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lvj6h")
+volume_db = -10.0
+
+[node name="Impact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_33ab7")
+volume_db = -20.0
+
+[node name="Page" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oomk4")
+volume_db = -20.0

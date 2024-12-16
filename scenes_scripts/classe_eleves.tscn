@@ -1,0 +1,131 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhiqovyoupahs"]
+
+[ext_resource type="Script" path="res://scenes_scripts/classe_eleves.gd" id="1_6bsmj"]
+[ext_resource type="PackedScene" uid="uid://ojsqiv526s8c" path="res://scenes_scripts/grille_relations.tscn" id="2_fdlhy"]
+[ext_resource type="PackedScene" uid="uid://bjjiwy8rrh1a0" path="res://scenes_scripts/ouvrir_sauvegarde.tscn" id="3_ys23t"]
+
+[node name="ClasseEleves" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6bsmj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 20
+
+[node name="Entrees" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelQuestion" type="Label" parent="HBoxContainer/MarginContainer/Entrees"]
+layout_mode = 2
+text = "O11_QUESTION"
+
+[node name="EntreeQuestion" type="LineEdit" parent="HBoxContainer/MarginContainer/Entrees"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "O11_TOOLTIP"
+context_menu_enabled = false
+
+[node name="LabelNomClasse" type="Label" parent="HBoxContainer/MarginContainer/Entrees"]
+layout_mode = 2
+text = "O12_CLASSE"
+
+[node name="EntreeClasse" type="LineEdit" parent="HBoxContainer/MarginContainer/Entrees"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "O12_TOOLTIP"
+max_length = 20
+context_menu_enabled = false
+
+[node name="LabelEleveAjout" type="Label" parent="HBoxContainer/MarginContainer/Entrees"]
+layout_mode = 2
+text = "O13_ELEVE"
+
+[node name="EntreeEleve" type="LineEdit" parent="HBoxContainer/MarginContainer/Entrees"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "O13_TOOLTIP"
+max_length = 12
+context_menu_enabled = false
+
+[node name="Explication" type="Label" parent="HBoxContainer/MarginContainer/Entrees"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "O14_LECTURE_TABLEAU"
+autowrap_mode = 2
+
+[node name="EnleverDernier" type="Button" parent="HBoxContainer/MarginContainer/Entrees"]
+layout_mode = 2
+text = "O15_SUPPR_NOM"
+
+[node name="ResetListe" type="Button" parent="HBoxContainer/MarginContainer/Entrees"]
+layout_mode = 2
+text = "O15_EFFACER_ELEVES"
+
+[node name="EffacerContenu" type="Button" parent="HBoxContainer/MarginContainer/Entrees"]
+layout_mode = 2
+text = "O15_EFFACER_AFFINITES"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.9
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Question" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GrilleRelations" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer" instance=ExtResource("2_fdlhy")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="OuvrirSauvegarde" parent="HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("3_ys23t")]
+layout_mode = 2
+text = "O18_OUVRIR"
+
+[node name="Sauver" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "O19_SAUVEGARDER"
+
+[connection signal="text_submitted" from="HBoxContainer/MarginContainer/Entrees/EntreeQuestion" to="." method="_on_entree_question_text_submitted"]
+[connection signal="text_submitted" from="HBoxContainer/MarginContainer/Entrees/EntreeClasse" to="." method="_on_entree_classe_text_submitted"]
+[connection signal="text_submitted" from="HBoxContainer/MarginContainer/Entrees/EntreeEleve" to="." method="_on_entree_eleve_text_submitted"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/Entrees/EnleverDernier" to="." method="_on_enlever_dernier_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/Entrees/ResetListe" to="." method="_on_reset_liste_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/Entrees/EffacerContenu" to="." method="_on_effacer_contenu_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/OuvrirSauvegarde" to="HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/OuvrirSauvegarde" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/Sauver" to="." method="_on_sauver_pressed"]

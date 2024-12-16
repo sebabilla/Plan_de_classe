@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Plan de classe"
+run/main_scene="res://scenes_scripts/main.tscn"
+config/use_custom_user_dir=true
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://scenes_scripts/globals.gd"
+
+[debug]
+
+gdscript/warnings/integer_division=0
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[filesystem]
+
+import/blender/enabled=false
+
+[gui]
+
+theme/custom="res://themes/plan.tres"
+theme/custom_font="res://fonts/NotoSansJP-Regular.ttf"
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://traductions/traductions.en.translation", "res://traductions/traductions.fr.translation", "res://traductions/traductions.es.translation", "res://traductions/traductions.ja.translation")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

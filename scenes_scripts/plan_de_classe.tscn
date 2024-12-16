@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://de3gvg6gimg31"]
+
+[ext_resource type="Script" path="res://scenes_scripts/plan_de_classe.gd" id="1_c6jyj"]
+[ext_resource type="Script" path="res://scenes_scripts/murs.gd" id="2_h0ghx"]
+
+[node name="PlanDeClasse" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c6jyj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.992157, 0.937255, 0.94902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AjouterTable" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "O31_TOOLTIP"
+text = "O31_AJOUTER"
+
+[node name="EnleverTable" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "O32_TOOLTIP"
+text = "O32_ENLEVER"
+
+[node name="RetournerPlan" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "O33_TOOLTIP"
+text = "O33_VERS_VE"
+
+[node name="AjouterMurs" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "O34_TOOLTIP"
+text = "O34_TRACER"
+
+[node name="Capture" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "O35_CAPTURER"
+
+[node name="PorteTables" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PorteTablesVierges" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Murs" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_h0ghx")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/AjouterTable" to="." method="_on_ajouter_table_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnleverTable" to="." method="_on_enlever_table_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RetournerPlan" to="." method="_on_retourner_plan_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/AjouterMurs" to="." method="_on_ajouter_murs_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Capture" to="." method="_on_capture_pressed"]

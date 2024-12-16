@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjjiwy8rrh1a0"]
+
+[ext_resource type="Script" path="res://scenes_scripts/ouvrir_sauvegarde.gd" id="1_jbylg"]
+
+[node name="OuvrirSauvegarde" type="MenuButton"]
+offset_right = 6.0
+offset_bottom = 40.0
+text = "Ouvrir"
+flat = false
+item_count = 1
+popup/item_0/text = "Nom_Sauvegarde.csv"
+script = ExtResource("1_jbylg")
